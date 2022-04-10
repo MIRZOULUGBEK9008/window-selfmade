@@ -1,9 +1,27 @@
 /* CUSTOM PROPS */
 :root {
+  --main-fonts: "Smeshariki 2007 Fixed", "Arial", sans-serif;
+  --bg-color: blue;
+  --button-bg: rgba(255, 255, 255, 0.7);
+  --button-color: rgba(0, 0, 0, 0.7);
+  --light-bg: rgba(174, 193, 190, 0.8);
+  --dark-bg:  rgba(0, 0, 0, 0.8);
+}
 
+.dark-mode {
+  --light-bg: rgba(0, 0, 0, 0.9);
 }
 
 /* FONT-FACE  */
+@font-face {
+  font-family: "Smeshariki 2007 Fixed";
+  src: url("../fonts/Smeshariki2007Fixed-Regular.woff2") format("woff2"),
+  url("../fonts/Smeshariki2007Fixed-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 
 /* GLOBAL-STYLES  */
@@ -23,13 +41,13 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: #fff;
-  color: #222;
-  font-family: "Arial", sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
+  background-color: var(--bg-color);
+  font-family: var(--main-fonts);
+  font-size: 30px;
+  line-height: 1;
   padding: 0;
   margin: 0;
+  transition: background-color 1s ease;
 }
 
 img {
@@ -54,6 +72,82 @@ img {
   flex-grow: 1;
 }
 
+.main-wrapper {
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/main-bg.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--bg-color);
+}
+
+.manage-theme {
+  display: flex;
+  justify-content: right;
+  padding: 50px;
+  padding-bottom: 30px;
+}
+
+
+/* BUTTON  */
+.main-mode {
+  min-width: 110px;
+  text-align: center;
+  border: none;
+  padding: 7px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.main-mode:active {
+  transform: scale(0.8);
+}
+
+.light-mode {
+  background-color: var(--button-bg);
+  color: var(--button-color);
+}
+
+.night-mode {
+  background-color: var(--button-color);
+  color: var(--button-bg);
+}
+
+.main-windows-wrapper {
+  display: flex;
+  width: 623px;
+  height: 490px;
+  margin-right: auto;
+  margin-left: auto;
+  background-image: url(../img/Snimok.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 25px ridge rgba(78, 68, 78, 1);
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  transition: transform-origin 0.6s ease;
+}
+
+.main-windows-wrapper:hover {
+
+}
+
+.window {
+  width: 350px;
+  border: 20px ridge rgb(138, 85, 47);
+  background-color: var(--light-bg);
+}
+
+.window-left {
+  transform-origin: left center;
+}
+
+.window-right:hover {
+  transform-origin: right center;
+}
+
 
 /* RETINA-BG  */
 @media
@@ -64,4 +158,11 @@ only screen and (        min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) {
 
+  .main-wrapper {
+    background-image: url(../img/main-bg@2x.jpg);
+  }
+
+  .main-windows-wrapper {
+    background-image: url(../img/Snimok@2x.jpg);
+  }
 }
