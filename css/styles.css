@@ -32,7 +32,7 @@ html {
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing: inherit;
 }
 
 body {
@@ -100,10 +100,6 @@ img {
   transition: transform 0.2s ease;
 }
 
-.main-mode:active {
-  transform: scale(0.8);
-}
-
 .light-mode {
   background-color: var(--button-bg);
   color: var(--button-color);
@@ -114,36 +110,44 @@ img {
   color: var(--button-bg);
 }
 
-.main-windows-wrapper {
-  width: 840px;
-  height: 430px;
+.windows-wrapper-inner {
   display: flex;
-  margin-right: auto;
-  margin-left: auto;
-  background-image: url(../img/Joker.jpg);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: contain;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-windows-wrapper {
+  display: flex;
   border: 25px ridge rgba(78, 68, 78, 1);
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  transition: transform 0.6s ease;
+  background-image: url(../img/Snimok.png);
+  background-position: center  center;
 }
 
 .window {
-  width: 425px;
-  height: 380px;
-  border: 15px ridge rgb(138, 85, 47);
+  width: 450px;
+  height: 450px;
   background-color: var(--light-bg);
-  transition: transform 0.6s ease;
+  border: 25px ridge rgba(78, 68, 78, 1);
+  transition: transform 1s ease;
 }
 
-.window-left:hover {
-  transform: translate(-180px);
+.window-left {
+  transform-origin: left center;
 }
 
-.window-right:hover {
-  transform: translate(180px);
+.window-right {
+  transform-origin: right center;
 }
 
+.main-windows-wrapper:hover .window-left {
+  transform: perspective(2300px) rotateY(80deg);
+}
+
+.main-windows-wrapper:hover .window-right {
+  transform: perspective(2300px) rotateY(-80deg);
+}
 
 /* RETINA-BG  */
 @media
